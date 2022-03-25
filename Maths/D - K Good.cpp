@@ -7,3 +7,30 @@ Explanation :- It is purely based on math and observation ,for all odd values we
                
                Link :- https://codeforces.com/blog/entry/101211
 */
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    
+    while(t--){
+        long long n;
+        cin>>n;
+        
+        long long k = 1;
+        
+        if(n%2)cout<<2<<"\n";
+        else{
+            n<<=1;
+            while(n%2==0){
+                n>>=1;
+                k<<=1;
+            }
+            if(n == 1)cout<<"-1\n";
+            else{
+                cout<<min(n,k)<<"\n";
+            }
+        }
+    }
+}
