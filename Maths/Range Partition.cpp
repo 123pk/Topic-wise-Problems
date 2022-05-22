@@ -17,3 +17,50 @@ Approach :- We will need to simplify the equation ,
                 
 Time complexity :- O(n)
 */
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    
+    for(int z = 1;z<=t;++z){
+        cout<<"Case #"<<z<<": ";
+        
+        long long n,x,y;
+        cin>>n>>x>>y;
+        
+        long long tot = n*(n+1ll);
+        tot>>=1ll;
+        long long xx = tot;
+        tot*=y;
+        long long sum = x+y;
+        if(tot%sum)cout<<"IMPOSSIBLE\n";
+        else{
+            cout<<"POSSIBLE\n";
+            int end = n;
+            int size = 0;
+            //cout<<tot<<" ";
+            tot=xx - (tot/sum);
+           // cout<<tot<<" "<<endl;
+            vector<int>val;
+            while(tot>0){
+                if(tot>=end){
+                    val.push_back(end);
+                    tot-=end;
+                    end--;
+                }
+                else{
+                    val.push_back(tot);
+                    tot = 0;
+                    break;
+                }
+            }
+            
+            cout<<val.size()<<"\n";
+            for(auto&x:val)cout<<x<<" ";
+            cout<<"\n";
+            
+        }
+    }
+}
