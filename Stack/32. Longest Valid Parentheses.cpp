@@ -7,3 +7,29 @@ Approach :- We will use stack data structure, stack of pair<char,int> , when sta
 Time complexity :- O(N) 
 Space Complexity :- O(N)
 */
+class Solution {
+public:
+    int longestValidParentheses(string s) {
+        stack<pair<char,int>>P;
+        int ans = 0;
+        int idx = 0;
+        for(auto&x:s){
+            if(x == '('){
+                P.push({x,idx});
+            }
+            else{
+                if(!P.empty() && P.top().first == '('){
+                    P.pop();
+                    if(P.empty())ans = max(ans,idx+1);
+                    else{
+                        ans = max(ans,idx - P.top().second);
+                    }
+                }
+                else P.push({x,idx});
+            }
+            idx++;
+        }
+        
+        return ans;
+    }
+};
