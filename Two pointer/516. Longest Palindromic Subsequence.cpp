@@ -7,3 +7,36 @@ Approach :- So we will try to look for the center point of any palindrome , we w
            2. for even length of palindromic substring we will start with 'left' = i , 'right' = i+1
               and do the same we did in step 1
 */
+class Solution {
+public:
+    int countSubstrings(string s) {
+        int ans = 0;
+        int n = s.length();
+        //cout no of odd length substrings
+        for(int i=0;i<n;++i){
+            int left = i,right = i;
+            while(left>=0 && right<n){
+                if(s[left] == s[right])ans++;
+                else break;
+                left--;
+                right++;
+            }
+        }
+        
+        //no count no of even length substrings
+        for(int i=0;i<n;++i){
+            
+            int left = i,right = i+1;
+            while(left>=0 && right<n){
+                if(s[left] == s[right]){
+                    ans++;
+                }
+                else break;
+                left--;
+                right++;
+            }
+        }
+        
+        return ans;
+    }
+};
