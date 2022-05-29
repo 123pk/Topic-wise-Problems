@@ -20,3 +20,37 @@ Approach :- The approach is to find size of largest substring to right of curren
             7 . {14,1} 
             so max no of time is '3'
  */
+class Solution {
+public:
+    int totalSteps(vector<int>& nums) {
+        stack<pair<int,int>>P;
+        int ans = 0;
+        int d = 0;
+        reverse(nums.begin(),nums.end());
+        
+        for(auto&x:nums){
+            if(P.size() == 0){
+                d = 0;
+                P.push({x,0});
+            }
+            else{
+                if(P.top().first<x){
+                     d = 0;
+                    while(!P.empty() && x>P.top().first){
+                        d++;
+                        d += abs(P.top().second - min(d,P.top().second));
+                        P.pop();
+                    }
+                    P.push({x,d});
+                    ans = max(ans,d);
+                }
+                else {
+                    d = 0;
+                    P.push({x,0});
+                }
+            }
+        }
+        
+        return ans;
+    }
+};
