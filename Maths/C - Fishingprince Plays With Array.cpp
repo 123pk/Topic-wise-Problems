@@ -74,6 +74,10 @@ int main(){
         int j = 0;
         //now we will try to get B from P;
         for(int i=0;i<k;++i){
+            if( j == P.size()) {
+                f = 1;
+                break;
+            }
             if(B[i]%P[j].first){
                 //here we cannot do anything to get B[i] from p[J]
                 f = 1;break;
