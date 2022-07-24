@@ -1,5 +1,10 @@
 /*
-
+Platform :- Codeforces Round 810
+Approach :- We will form graph with the frienship pair with edges between the friends pair value no of edges is even then we will invite every one as no of cakes are even,
+            If no of edges is odd then we have two options either to remove the smalles value node with odd no of edges or to remove one even edge and a neighbour edge to it
+            which has odd no of edges after removal . Min cost of both cases is our solution.
+            
+Time complexity :- O(n)
 */
 #include<bits/stdc++.h>
 using namespace std;
