@@ -1,7 +1,8 @@
 /*
 Platform :- Codeforces
 Contest :- Codeforces Educational Round 109
-Approach :- 
+Approach :- We have option to assign ith person chair occupied to jth chair tha is not occupied,
+             we maintain two array one store the index of occupied chairs and one store the unoccupied chairs.
 */
 #include<bits/stdc++.h>
 using namespace std;
