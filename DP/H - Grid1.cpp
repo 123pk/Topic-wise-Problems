@@ -8,3 +8,39 @@ Approach :- We will use recursion and memoisation in bottom up manner , so we wi
             
             -- for tabular form dp[i][j] = dp[i-1][j] + dp[i][j-1] for bottom up
 */
+#include<bits/stdc++.h>
+using namespace std;
+
+int dp[1001][1001];
+int mod = 1e9+7;
+
+int find(int i,int j,vector<vector<char>>&A){
+    
+    if(i<0 || j<0)return 0;
+    
+    if(dp[i][j] != -1)return dp[i][j];
+    
+    if(A[i][j] == '#')return dp[i][j] = 0;
+    if(i == 0&&j == 0){
+        return dp[i][j] = 1;
+    }
+    int val = find(i-1,j,A)%mod  +find(i,j-1,A)%mod;
+    
+    return dp[i][j] = val%mod;
+}
+
+int main(){
+     int h,w;
+     cin>>h>>w;
+     
+     vector<vector<char>> ch(h,vector<char>(w));
+     for(int i=0;i<h;++i){
+         for(int j=0;j<w;++j){
+             cin>>ch[i][j];
+         }
+     }
+     memset(dp,-1,sizeof(dp));
+     cout<<find(h-1,w-1,ch);
+     
+     
+}
