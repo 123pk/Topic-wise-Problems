@@ -1,6 +1,6 @@
 /*
 Platform :- CSES
-Approach :- 
+Approach :- Sort the first Array in increasing order and then do binary search on B and find the samllest element in range (A[i]-k,A[i]+k)
 */
 #include<bits/stdc++.h>
 using namespace std;
