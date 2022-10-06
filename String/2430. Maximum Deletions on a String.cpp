@@ -12,6 +12,8 @@ Time Comlexity :- O(n*n)
 */ 
 //this functions finds the ith value for string usng KMP algorithms 
 // first 'i' letters and following 'i' letters of string are equal
+//this functions finds the ith value for string usng KMP algorithms 
+// first 'i' letters and following 'i' letters of string are equal
 
 vector<int> indexes(string&s){
     
