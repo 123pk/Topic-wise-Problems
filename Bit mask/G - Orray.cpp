@@ -7,3 +7,49 @@ Appraoch :- We get increasing value if we set a bit that is not set , so there c
             
  Time Complexity :- O(n)
 */
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        
+        int A[n];
+        for(int i=0;i<n;++i)cin>>A[i];
+        vector<int>vis(n);
+        vector<int>ans;
+        
+        //we have just 32 bits and we can set them
+        int val = 0;
+        for(int i=0;i<32;++i){
+            int score = val;
+            int idx = -1;
+            for(int j=0;j<n;++j){
+                if(vis[j])continue;
+                int cur = val | A[j];
+                
+                if(cur>score){
+                    score = cur;
+                    idx = j;
+                }
+            }
+            
+            if(idx == -1)break;
+            vis[idx]++;
+            ans.push_back(A[idx]);
+            val = score;
+        }
+        
+        
+        for(int i=0;i<n;++i){
+            if(vis[i])continue;
+            ans.push_back(A[i]);
+        }
+        
+        for(auto&x:ans)cout<<x<<" ";
+        cout<<"\n";
+    }
+}
