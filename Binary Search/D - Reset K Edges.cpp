@@ -6,40 +6,33 @@ Time Complexity:- O(n log n)
 */
 #include<bits/stdc++.h>
 using namespace std;
+//we will use dfs in place of bfs
+//we will break the edge while coming form left towards the root
 
-void check(int start,vector<vector<int>>&tree,int len,int& f,int k){
+int find(int node,vector<vector<int>>&tree,int& k,int&f,int len){
     
-    queue<pair<int,int>>bfs;
-    bfs.push({start,0});
-  //  cout<<start<<" "<<len<<" "<<f<<" "<<k<<"\n";
-    
-    while(!bfs.empty()){
-        pair<int,int>temp = bfs.front();
-        int node = temp.first;
-        int depth = temp.second;
-        bfs.pop();
-        if(len == 2){
-            cout<<node+1<<" "<<depth<<" "<<k<<"\n";
-        }
-        for(auto&x:tree[node]){
-            if(depth == len){
-                //I need to cut this node
-                //edge
-                if(k == 0){
-                    f=1;
-                    //I cannot delete the node
-                    break;
-                }
-                k--;
-                bfs.push({x,1});
-            }
-            else{
-                bfs.push({x,depth+1});
-            }
-        }
-        
-        if(f)break;
+    if(tree[node].size() == 0){
+        //there are not child 
+        return 1;
     }
+    
+    int val = 0;
+    for(auto&x:tree[node]){
+        //we will check if the lenght is reached or not if it is reache then we do
+        //cut the edge else we don't have the time to do so 
+        int temp = find(x,tree,k,f,len);
+        if(temp == len){
+            if(node){
+               // cout<<(node+1)<<" got from "<<(x+1)<<"\n";
+                if(k == 0)f=1;
+                else k--;
+            }
+        }
+        else val = max(val,temp);
+    }
+    
+    
+    return val+1;
 }
 
 int main(){
@@ -61,16 +54,16 @@ int main(){
         //I am using binary search and using that I will find the max height
         int start = 1,end = n,mid = (start+end)/2;
          
-         
+        
         int ans  = n;
         
         while(start<=end){
             
             //so I will check if I can achieve a height of mid in k operations or not
-            int f = 0;
-            
-            check(0,tree,mid,f,k);
-            
+            int f = 0,d = k;
+             
+            int z = find(0,tree,d,f,mid);
+            //cout<<mid<<" "<<f<<" "<<k<<"\n";
             if(f){
                 //I was not able to 
                 //I will increase the hiight
