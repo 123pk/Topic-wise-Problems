@@ -20,8 +20,8 @@ public:
         
         if(!node)return 0;
         mx = max(mx,node->val);
-        int val1 = dfs(node->left,depth) ;
-        int val2 = dfs(node->right,depth);
+        int val1 = dfs(node->left,depth,mx) ;
+        int val2 = dfs(node->right,depth,mx);
         //cout<<node->val<<" "<<val1<<" "<<val2<<"\n";
         depth[node->val] = {val1,val2};
         return 1+max(val1,val2);
@@ -45,7 +45,7 @@ public:
         queue<TreeNode*>bfs;
         bfs.push(root);
         
-        vector<int>level(mx+1);
+        vector<int>level(mx+1),parent(mx+1);
         int c = 0;
         while(!bfs.empty()){
             int sz = bfs.size();
@@ -54,17 +54,40 @@ public:
                 TreeNode*node = bfs.front();
                 bfs.pop();
                 
+                
                 int value = node->val;
+                level[value] = c;
+                
+                
+                    m2 = max(m2,min(depth[value].first,depth[value].second));
+                    m1 = max(m1,max(depth[value].first,depth[value].second));
+                
+                
                 if(node->left){
-                    
+                    parent[node->left->val] = node->val;
+                    bfs.push(node->left);
                 }
                 
                 if(node->right){
-                    
+                    parent[node->right->val] = node->val;
+                    bfs.push(node->right);
                 }
             }
             lvl_depth[c] = {m1,m2};
             c++;
+        }
+        
+        //get the parent
+        
+        for(auto&x:queries){
+            int p = parent[x];
+            int d = level[p];
+            int cur = lvl_depth[d].first;
+            int c = level[x];
+            if((cur-1) == depth[x].first){
+                ans.push_back(lvl_depth[p].second + c-1);
+            }
+            else ans.push_back(lvl_depth[p].first+c-1);
         }
         
         return ans;
