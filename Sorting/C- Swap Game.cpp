@@ -1,3 +1,13 @@
+/*
+Platform :- Codeforces 
+Contest :- Codeforces Round #832 Div 2 
+Approach :- So approach is to choose the smallest value we can choose from , there is always going to be one values which we cannot choose
+            as that value was already used and we swapped it it is not the first element.
+            -- the smallest value is going to be the first elemnt after 1st move
+            -- we remove mn-1 from each elemnt where mn = min of all element
+Time Complexity :- O(n log n)
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
