@@ -1,7 +1,11 @@
 /*
 Platform :- Coding competition with google
 Contest :- Google Kickstart Round H 2022
-Approach :- We will 
+Approach :- We will Greedily create the graph, it is unnecessay to join nodes with same value capacity.
+            We will make a directed graph, where edge is pointing from high to low value.
+            Now using dfs we will find the max score that we can get for each node .
+            The max of all is our answer
+ Time Complexity :- O(n+e)
 */
 
 #include<bits/stdc++.h>
@@ -53,11 +57,11 @@ int main(){
            else{
                if(cap[u]>cap[v]){
                    graph[u].push_back(v);
-                  // degree[v]++;
+                  
                }
                else {
                    graph[v].push_back(u);
-                  // degree[u]++;
+       
                }
            }
         }
