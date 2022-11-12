@@ -39,8 +39,8 @@ int main(){
             for(int j=2;j*j<=i;++j){
                 if(i%j == 0){
                     int f = i/j;
-                    val = min(val,find(i,f)+score[f]);
-                    val = min(val,find(i,j)+score[j]);
+                    val = min(val,find(i,f)+dp[f]);
+                    val = min(val,find(i,j)+dp[j]);
                 }
             }
             dp[i] = min(dp[i],val);
