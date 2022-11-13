@@ -1,3 +1,17 @@
+/*
+Platform :- Leetcode
+Contest :- Leetcode Weekly contest 318
+Approach :- We will first find the palindromes of size 'k' and 'k+1' , the reason being we don't care about all other values greater than >= (k+1) because 
+            if we have a palindrome of size (k+2) then we will have a plindrome of size (k) also and same for (k+3) and beyonds.
+            So now we maintain a set where we store the 'starting' and 'ending' index of the palindrome of size (k) and (k+1)
+           -- No we use ('recursion' + 'memoisation') , where for 'i'th index we have few options,
+            -- we check if there is any palindrome startin from this index of size (k) or (k+1) , if we have then we increse our count and get the max value for
+               ((i-(k)),0) and ((i-(k+1)),0).
+            -- else we find the total number of palindromes from (i-1 to 0)
+Time Complexity :- O(n*2)
+*/
+
+
 class Solution {
 public:
     
