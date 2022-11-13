@@ -8,7 +8,7 @@ Approach :- We will first find the palindromes of size 'k' and 'k+1' , the reaso
             -- we check if there is any palindrome startin from this index of size (k) or (k+1) , if we have then we increse our count and get the max value for
                ((i-(k)),0) and ((i-(k+1)),0).
             -- else we find the total number of palindromes from (i-1 to 0)
-Time Complexity :- O(n*2)
+Time Complexity :- O(n^2 log n)
 */
 
 
