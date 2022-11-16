@@ -8,3 +8,23 @@ Approach :- So we have to call another function "guess"  which takes on argument
             So this is good hint for using the binary search , so we will use binary search as the 'actual_number' is between '1' and 'n' inclusive,
 Time Complexity :- O(log n)
 */
+  
+class Solution {
+public:
+    int guessNumber(int n) {
+         int start = 1,end = n,mid = (start+(end-start)/2);
+         while(start<end){
+             int val = guess(mid);
+             if(val == -1){
+                 end = mid-1;
+                 mid = (start+(end-start)/2);
+             }
+             else if(val == 1){
+                 start = mid+1;
+                 mid = (start+(end-start)/2);
+             }
+             else break;
+         }
+         return mid;
+    }
+};
