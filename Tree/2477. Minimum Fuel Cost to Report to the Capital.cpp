@@ -1,7 +1,14 @@
 /*
 Platform :- Leetcode
 Contest :- Leetcode Weekly contest 320
-Approach :- 
+Approach :- We will use DFS and for each node we want to get number of cars coming to that node and number of passenger,
+            for fuel we can always add number of cars moving out of this node.
+            We will modify the seating arrangement on each nodes baseed on passengers,
+            Let x =  pasengers reached node 
+            then x+1 will leave as (1)passenger will from current node
+            and they will require 'ceil(x+1/seat)' = cars , those many cars will travel 1 unit distance while reaching to parent node and that will cost them 
+            'car' liter of fuel.
+ Time Complexity :- O(m+n)
 */
 class Solution {
 public:
