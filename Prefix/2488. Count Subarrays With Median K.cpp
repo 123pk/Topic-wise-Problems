@@ -8,3 +8,36 @@ Approach :- It is one of those repeated subarray problems which we have standard
             Which we solve using map and prefix sum .
 Time Comlexity :- O(n log n)
 */
+class Solution {
+public:
+    int countSubarrays(vector<int>& a, int k) {
+        using ll = long long;
+        ll p = 0;
+        
+        ll n = a.size();
+        
+        for (ll i = 0; i < n; i++) if (a[i] == k) p = i;
+        
+        map<ll, ll> v;
+        ll c = 0;
+        for (ll i = p; i >= 0; i--) {
+            if (a[i] < k) --c;
+            else if (a[i] > k) ++c;
+            
+            ++v[c];
+        }
+        
+        ll ans = 0;
+        
+        c = 0;
+        for (ll i = p; i < n; i++) {
+            if (a[i] < k) --c;
+            else if (a[i] > k) ++c;
+            
+            ans += v[-c];
+            ans += v[-c + 1];
+            // cout << ans << '\n';
+        }
+        return ans;
+    }
+};
