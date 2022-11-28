@@ -6,3 +6,26 @@ Approach :- We maintain count array which stores the count of matches 'x'th play
             if we have count[x] == 1,we push in second array.
 
 */
+class Solution {
+public:
+    vector<vector<int>> findWinners(vector<vector<int>>& matches) {
+        map<int,int>losser;
+        set<int>played;
+
+        for(auto&x:matches){
+            played.insert(x[0]);
+            played.insert(x[1]);
+            losser[x[1]]++;
+        }
+
+        vector<vector<int>>ans(2);
+
+        for(auto&x:played){
+            if(losser[x] == 0)ans[0].push_back(x);
+            else if(losser[x] == 1)ans[1].push_back(x);
+        } 
+ 
+
+        return ans;
+    }
+};
