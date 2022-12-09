@@ -1,7 +1,11 @@
 /*
 Platform :- Codechef
 Contest :- Codechef Starters 68
-Approach :- 
+Approach :- If you will observe you will find it is good to do xor operation with '1' and any other even number,
+            and that too with small even numbers . So we get two arrays of odd and even values . We don't add '1' in odd values we maintain a count of '1' then 
+            let 'c' be no of 1's we will get the even values in increasing order and do xor with them.
+            Now we find product of modified array elements and remaining even and odd values.
+ Time Complexity :- O(n logn)
 */
 
 #include<bits/stdc++.h>
