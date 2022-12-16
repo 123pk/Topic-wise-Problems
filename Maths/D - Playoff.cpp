@@ -11,3 +11,36 @@ Approach :- If you will observer carefully you will find that , for following ex
            
 Time Complexity :- O(n)
 */
+#include<bits/stdc++.h>
+using namespace std;
+ 
+
+int main(){
+    int t;
+   // cin>>t;
+    t = 1;
+    while(t--){
+        
+         int n;
+         cin>>n;
+         string s;
+         cin>>s;
+         
+         int one = 0,zero = 0;
+         int small = 0,big = 0;
+         for(int i=0;i<n;++i){
+             if(s[i] == '1'){
+                 small += (1<<one);
+                 one++;
+                 
+             }
+             else{
+                 big += (1<<zero);
+                 zero++;
+             }
+         }
+         int lim  = 1<<n;
+         for(int i=small+1;i<=(lim-big);++i)cout<<i<<" ";
+         cout<<"\n";
+    }
+}
