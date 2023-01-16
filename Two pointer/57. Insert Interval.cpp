@@ -1,3 +1,19 @@
+/*
+Platform :- Leetcode
+Approach :- first sort the interval in increasing order of start value, since they are not overlappinng you don't need to care about second value of range
+             now maintain tow variable 'l' and 'r'which are end points of current range.
+             There are three situations :- 
+             1. we have already added the new Interval
+                 -- we check if current interval is copletely inside the l and r-- then we leave them
+                 --- if they are overalpping then we update the end point of interval.
+                 --- disjoint then update and add to our answer
+             2. we have not added the current interval
+                -- if current enpoints are disjoint and start point is > new interval end then we add the new interval and 
+                   add all the remainining intervals as it is.
+                -- if current end point come before the new interval we add the current interval and move to next one
+Time Complexity :- O(n log n)
+*/
+
 class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
