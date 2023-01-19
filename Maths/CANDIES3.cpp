@@ -1,9 +1,27 @@
-
+/*
+Platform :- Codechef
+Contest :- Codechef Starters 74
+Approach :- For each value 'i' from 1 to m , we will find sum of (A[j]/i) for all A[j] in array.
+            This will be O(2*m) because no of factors -
+	    1 have m
+	    2 have m/2
+	    3 have m/3
+	    4 have m/5
+	    5 have m/6 
+	    .
+	    .
+	    m have 1 
+	    
+	    so the sum is m+ (m/2) + (m/3) + (m/4) + .. +1 ~ = 2*m
+	    We need to maintain one array of size 'm' to store the frequencies ,now we will do suffix sum where 'suff[i]' = no of values >=i in array are present
+	    We will now for each value of i' from 1 to m traverse from the largest multiple of 'i' <= m ,and come all the way to '1' 
+	    We will know no of value in range ( 'count' = suff[j] - suff[j+i] ) , we will have (j/i)*count values in that range which will we get reward from
+Time Complexity :- O(2*m) ~ O(m) 
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
  
-
 int main() {
 	// your code goes here
 	int t;
@@ -33,10 +51,7 @@ int main() {
 	        tot = fre[i];
 	    }
 	    
-	   // for(int i=1;i<=m;++i)cout<<fre[i]<<" - "<<i<<"\n";
-	  //  cout<<"\n";
-	    
-	    //now the magic
+	   
 	    long long ans = 0;
 	    
 	    for(int i=0;i<m;++i){
