@@ -6,8 +6,15 @@ Approach :- We want two things from each child for each node , the ( not_removed
             removed_sum - max sum of path of nodes ( we have already removed leaf value )
             
             -- we want to find the max sum in both cases.
+               ans = max(ans , Max_not_removed_sum_node1  + max_removed_sum_node2 + current_val )
+               where node1 - gives the maximum not_removed_sum
+                     node2 - gives the maximum removed_sum
+                     node1 != node2 , 
+               In case of just one child node , it is max(not_removed_sum , removed_sum + node_val)
+ 
                
-            
+Runtime :- O(n+e)
+Use :- DFS
 */
  
 class Solution {
