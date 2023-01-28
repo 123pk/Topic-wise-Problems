@@ -9,3 +9,55 @@ Approach :- We will store the frequency of count of each value and store all val
                - increse our count by 1
 Time Complexity :- O(n log n)
 */
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin>>t;
+    
+    while(t--){
+       int n;
+       cin>>n;
+       
+       set<long long>unq;
+       
+       map<long long,int>P;
+       long long A[n];
+       for(int i=0;i<n;++i){
+           cin>>A[i];
+           P[A[i]]++;
+           unq.insert(A[i]);
+       }
+       int ans = 0;
+       while(!unq.empty()){
+           //get what uou can get
+           auto it = unq.begin();
+           vector<long long>temp;
+           long long last = *it;
+           ans++;
+           for(auto&x:unq){
+               if(x == last){
+                   if(P[last] == 1){
+                       temp.push_back(last);
+                   }
+                   P[x]--;
+                   last++;
+               }
+               else{
+                   break;
+               }
+           }
+           
+           for(auto&x:temp){
+               unq.erase(x);
+               //P[x]--;
+           }
+           temp.clear();
+       }
+       
+        cout<<ans<<"\n";
+    }
+}
