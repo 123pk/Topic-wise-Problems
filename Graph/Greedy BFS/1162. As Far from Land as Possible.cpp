@@ -30,7 +30,8 @@ public:
                        int l = temp.first.first;
                        int r = temp.first.second;
                        int cost = temp.second;
-
+                       
+                        //moving up if water and min distance of that cell is > cost + 1
                        if(l-1>=0){
                           if(grid[l-1][r] == 0){
                               if(score[l-1][r] > (cost+1)){
@@ -39,7 +40,7 @@ public:
                               }
                            }
                         }
-
+                        //moving down if water and min distance of that cell is > cost + 1
                         if(l+1<n){
                           if(grid[l+1][r] == 0){
                               if(score[l+1][r] > (cost+1)){
@@ -48,7 +49,7 @@ public:
                               }
                            }
                         }
-
+                        //moving right if water and min distance of that cell is > cost + 1
                         if(r+1<m){
                           if(grid[l][r+1] == 0){
                               if(score[l][r+1] > (cost+1)){
@@ -57,7 +58,7 @@ public:
                               }
                            }
                         }
-
+                        //moving left if water and min distance of that cell is > cost + 1
                         if(r-1>=0){
                           if(grid[l][r-1] == 0){
                               if(score[l][r-1] > (cost+1)){
