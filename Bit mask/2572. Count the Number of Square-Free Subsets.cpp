@@ -1,7 +1,7 @@
 /*
 Platform :- Leetcode
 Contest :- Leetcode Weekly contest 333
-Approach :- 
+Approach :- https://leetcode.com/problems/count-the-number-of-square-free-subsets/solutions/3204813/video-explanation-hindi-o-2-19-worst-case-bitmask-c/?orderBy=most_votes
 */
 class Solution {
 public:
