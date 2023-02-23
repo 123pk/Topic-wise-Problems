@@ -12,3 +12,51 @@ Approach :- You need to analyse the problem and you will find for 'x' capital we
 Time Complexity :- O(n log n)
              
 */
+
+class Solution {
+public:
+    int findMaximizedCapital(int k, int w, vector<int>& profits, vector<int>& capital) {
+        vector<pair<long long,long long>>P;
+        for(int i=0;i<profits.size();++i){
+            P.push_back({capital[i],profits[i]});
+        }
+
+        sort(P.begin(),P.end());
+
+        //now we 
+        long long start = w;
+        int i = 0,n = P.size();
+        priority_queue<long long> mx;
+        while(i<n){
+           if(start >= P[i].first){
+               mx.push(P[i].second);
+           } 
+           else{
+               //take the max and add it
+               while(!mx.empty() && start<P[i].first){
+                   //get the top value and add it
+                   start += mx.top();
+                   k--;
+                   mx.pop();
+                   if(k == 0)break;
+               }
+               if(start<P[i].first){
+                  break;
+               }
+               mx.push(P[i].second);
+              // cout<<start<<" ";
+           }
+           
+           i++;
+           if(k == 0)break;
+        }
+        
+
+        while(k>0 && !mx.empty()){
+            start += mx.top();
+            mx.pop();
+            k--;
+        }
+        return start;
+    }
+};
