@@ -1,3 +1,19 @@
+/*
+Platform :- Codeforces
+Contest :- Codeforces Round 855 Div 3
+Approach :- We will first check if we have same number and type of characters in each string or not ,
+            now if you will observe you will find that for index [0,min(n,k)-1] if there is any index which have different characters s[i]!=p[i] 
+            and [i+k < n] then we can always change this value .
+            else we cannot chang that value and our answer is "NO" else 
+            we can and it is "YES".
+            
+            how is this happening ?
+            k = 5 and n = 8 
+            we can move from 0 --> 5, 1 - >6 , 2 ->7 , 7->1 , 6 -> 0 so this is forming a cycle we can visit all the cells if we are able to visit
+            [0,min(k,n)-1] cell .
+Time Complexity :- O(n)
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
