@@ -1,4 +1,9 @@
+/*
+Platform :- Codechef
+Contest :- Codechef Starters 81
+Approach :- https://www.codechef.com/viewsolution/92167875
 
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
